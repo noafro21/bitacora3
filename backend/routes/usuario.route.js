@@ -1,8 +1,7 @@
 const express = require("express");
 const router = express.Router();
-const Usuario = require("../models/usuario.model"); // Importar el modelo de empleado
+const Usuario = require("../models/usuario.model"); // Importar el modelo de usuario
 
-//Rutas
 //POST: Crear/enviar un nuevo dato a la BD
 router.post("/", async (req, res) => {
   const { nombre, correo, puntosDisponibles, puntosCanjeados, puntosTotales } =
@@ -64,11 +63,11 @@ router.get("/:correo", async (req, res) => {
 /**  
 http://localhost:3000/usuarios
 {
-  "nombre": "Roberto González",
-  "correo": "roberto@test.net",
-  "puntosDisponibles": 5,
-  "puntosCanjeados": 10,
-      "puntosTotales": 15,
+  "nombre": "Rose González",
+  "correo": "rose@test.ac.cr",
+  "puntosDisponibles": 10,
+  "puntosCanjeados": 5,
+      "puntosTotales": 0,
   }
 */
 
