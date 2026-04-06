@@ -46,8 +46,9 @@ router.get("/", async (req, res) => {
 
 // GET: Solicitar un usuario por correo
 router.get("/:correo", async (req, res) => {
+  const { correo } = req.params;
   try {
-    const correo = decodeURIComponent(req.params.correo);
+    //const usuario = decodeURIComponent(req.params.correo);
     const usuario = await Usuario.findOne({ correo });
 
     if (!usuario) {
