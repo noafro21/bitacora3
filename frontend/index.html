@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paso Justo - Inicio</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-shoe-prints me-2"></i>Paso Justo
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="index.html"><i class="fas fa-home me-1"></i>Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="productos.html"><i class="fas fa-gift me-1"></i>Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="usuarios.html"><i class="fas fa-users me-1"></i>Usuarios</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-white text-center">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <i class="fas fa-shoe-prints hero-icon"></i>
+                    <h1 class="display-4 fw-bold mb-3">Bienvenido a Paso Justo</h1>
+                    <p class="lead mb-4">Acumula puntos con tus compras y canjéalos por productos en comercios afiliados.</p>
+                    <div class="d-flex gap-3 justify-content-center flex-wrap">
+                        <a href="productos.html" class="btn btn-light btn-lg">
+                            <i class="fas fa-gift me-2"></i>Ver Productos
+                        </a>
+                        <a href="usuarios.html" class="btn btn-outline-light btn-lg">
+                            <i class="fas fa-users me-2"></i>Gestionar Usuarios
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resumen del sistema -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">¿Cómo funciona?</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 text-center border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="feature-icon bg-primary text-white mb-3">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <h5 class="card-title">1. Realiza compras</h5>
+                            <p class="card-text text-muted">Compra en comercios afiliados y acumula puntos automáticamente en tu cuenta.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="feature-icon bg-success text-white mb-3">
+                                <i class="fas fa-coins"></i>
+                            </div>
+                            <h5 class="card-title">2. Acumula puntos</h5>
+                            <p class="card-text text-muted">Cada compra suma puntos a tu saldo disponible. ¡Cuanto más compres, más puntos acumulas!</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 text-center border-0 shadow-sm">
+                        <div class="card-body p-4">
+                            <div class="feature-icon bg-warning text-white mb-3">
+                                <i class="fas fa-gift"></i>
+                            </div>
+                            <h5 class="card-title">3. Canjea por productos</h5>
+                            <p class="card-text text-muted">Usa tus puntos para obtener productos exclusivos disponibles en comercios participantes.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estadísticas rápidas -->
+    <section class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Resumen del sistema</h2>
+            <div class="row g-4 text-center">
+                <div class="col-md-4">
+                    <div class="stat-card card border-0 shadow-sm p-4">
+                        <div class="stat-icon text-primary mb-2">
+                            <i class="fas fa-users fa-2x"></i>
+                        </div>
+                        <div class="stat-value" id="totalUsuarios">-</div>
+                        <div class="stat-label">Usuarios registrados</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card card border-0 shadow-sm p-4">
+                        <div class="stat-icon text-success mb-2">
+                            <i class="fas fa-box fa-2x"></i>
+                        </div>
+                        <div class="stat-value" id="totalProductos">-</div>
+                        <div class="stat-label">Productos disponibles</div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="stat-card card border-0 shadow-sm p-4">
+                        <div class="stat-icon text-warning mb-2">
+                            <i class="fas fa-coins fa-2x"></i>
+                        </div>
+                        <div class="stat-value" id="totalPuntos">-</div>
+                        <div class="stat-label">Puntos canjeados en total</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accesos rápidos -->
+    <section class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Accesos rápidos</h2>
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-5">
+                    <a href="productos.html" class="text-decoration-none">
+                        <div class="card border-0 shadow-sm quick-access-card">
+                            <div class="card-body d-flex align-items-center p-4">
+                                <div class="quick-icon bg-primary text-white me-4">
+                                    <i class="fas fa-gift fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Catálogo de productos</h5>
+                                    <p class="mb-0 text-muted">Explora los productos disponibles para canjear con tus puntos</p>
+                                </div>
+                                <i class="fas fa-chevron-right ms-auto text-muted"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <a href="usuarios.html" class="text-decoration-none">
+                        <div class="card border-0 shadow-sm quick-access-card">
+                            <div class="card-body d-flex align-items-center p-4">
+                                <div class="quick-icon bg-success text-white me-4">
+                                    <i class="fas fa-users fa-2x"></i>
+                                </div>
+                                <div>
+                                    <h5 class="mb-1">Gestión de usuarios</h5>
+                                    <p class="mb-0 text-muted">Administra los usuarios y sus puntos acumulados</p>
+                                </div>
+                                <i class="fas fa-chevron-right ms-auto text-muted"></i>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer bg-dark text-white py-4">
+        <div class="container text-center">
+            <p class="mb-0"><i class="fas fa-shoe-prints me-2"></i>Paso Justo &copy; 2026 — Sistema de puntos y canje de productos</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
+    <script src="js/index.js"></script>
+
+</body>
+
+</html>
