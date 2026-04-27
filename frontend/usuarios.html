@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Paso Justo - Gestión de Usuarios</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/productos.css">
+</head>
+
+<body>
+
+    <div class="container mt-4">
+
+        <!-- Encabezado -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="d-flex align-items-center justify-content-between">
+                    <div>
+                        <h1><i class="fas fa-users me-2"></i>Gestión de Usuarios</h1>
+                        <p class="lead">Administra los usuarios y sus puntos en el sistema</p>
+                    </div>
+                    <a href="index.html" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-2"></i>Inicio
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Formulario para agregar usuario -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="fas fa-user-plus me-2"></i>Agregar nuevo usuario
+                            <button class="btn btn-sm btn-light float-end" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#formularioUsuario">
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                        </h5>
+                    </div>
+                    <div class="collapse show" id="formularioUsuario">
+                        <div class="card-body">
+                            <form id="formNuevoUsuario">
+                                <div class="row g-3">
+                                    <div class="col-md-4">
+                                        <label for="inputNombre" class="form-label">Nombre <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="inputNombre"
+                                            placeholder="Nombre completo" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="inputCorreo" class="form-label">Correo <span class="text-danger">*</span></label>
+                                        <input type="email" class="form-control" id="inputCorreo"
+                                            placeholder="correo@ejemplo.com" required>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="inputPuntosDisponibles" class="form-label">Puntos disponibles</label>
+                                        <input type="number" class="form-control" id="inputPuntosDisponibles"
+                                            placeholder="0" min="0" value="0">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="inputPuntosCanjeados" class="form-label">Puntos canjeados</label>
+                                        <input type="number" class="form-control" id="inputPuntosCanjeados"
+                                            placeholder="0" min="0" value="0">
+                                    </div>
+                                    <div class="col-md-4">
+                                        <label for="inputPuntosTotales" class="form-label">Puntos totales</label>
+                                        <input type="number" class="form-control" id="inputPuntosTotales"
+                                            placeholder="0" min="0" value="0">
+                                    </div>
+                                    <div class="col-md-4 d-flex align-items-end">
+                                        <button type="submit" class="btn btn-primary w-100">
+                                            <i class="fas fa-save me-2"></i>Guardar usuario
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
+                            <div id="mensajeFormulario" class="mt-3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buscar usuario por correo -->
+        <div class="row mb-4">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header bg-light">
+                        <h5 class="mb-0"><i class="fas fa-search me-2"></i>Buscar usuario por correo</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group">
+                            <input type="email" class="form-control" id="inputBuscarCorreo"
+                                placeholder="Ingresa el correo del usuario">
+                            <button class="btn btn-outline-primary" type="button" id="btnBuscar">
+                                <i class="fas fa-search me-2"></i>Buscar
+                            </button>
+                        </div>
+                        <div id="resultadoBusqueda" class="mt-3"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de todos los usuarios -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h3>Todos los usuarios</h3>
+                    <button class="btn btn-outline-primary btn-sm" id="btnRefrescar">
+                        <i class="fas fa-sync-alt me-2"></i>Refrescar
+                    </button>
+                </div>
+                <div id="usuarios-container">
+                    <div class="text-center py-5">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Cargando usuarios...</span>
+                        </div>
+                        <p class="mt-3">Cargando usuarios...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO"
+        crossorigin="anonymous"></script>
+    <script src="js/usuarios.js"></script>
+</body>
+
+</html>
