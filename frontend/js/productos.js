@@ -69,7 +69,7 @@ async function cargarProductos() {
     mostrarError(
       "No se pudieron cargar los productos. Por favor, intenta nuevamente.",
     );
-    return [];
+    return null;
   }
 }
 
@@ -231,10 +231,15 @@ function mostrarError(mensaje) {
 // Función para actualizar todos los datos
 async function actualizarDatos() {
   // Cargar datos
-  await Promise.all([cargarDatosUsuario(), cargarProductos()]);
+  const [_resultadoUsuario, resultadoProductos] = await Promise.all([
+    cargarDatosUsuario(),
+    cargarProductos(),
+  ]);
 
-  // Renderizar productos
-  renderizarProductos();
+  // Solo renderizar si los productos se cargaron correctamente
+  if (resultadoProductos !== null) {
+    renderizarProductos();
+  }
 }
 
 actualizarDatos();
