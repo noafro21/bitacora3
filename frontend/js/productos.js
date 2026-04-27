@@ -208,6 +208,18 @@ function renderizarProductos() {
                     <div class="comercio-info">
                         <p class="mb-0"><i class="fas fa-store me-2"></i><strong>Comercio:</strong> ${producto.comercio || "No especificado"}</p>
                     </div>
+                    
+                    ${
+                      puedeCanjear
+                        ? `
+                        <button class="btn btn-success w-100 mt-3 btn-canjear"
+                            data-id="${producto._id}"
+                            data-puntos="${producto.puntosNecesarios || 0}">
+                            <i class="fas fa-check-circle me-2"></i>Canjear
+                        </button>
+                    `
+                        : ""
+                    }
                 </div>
             </div>
         `;
@@ -227,6 +239,45 @@ function mostrarError(mensaje) {
         </div>
     `;
 }
+
+// Función para canjear un producto
+async function canjearProducto(puntosNecesarios, boton) {
+  boton.disabled = true;
+  boton.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status"></span>Canjeando...';
+
+  try {
+    const response = await fetch(`${API_URL}/usuarios/${CORREO_USUARIO}/canjear`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ puntosNecesarios }),
+    });
+
+    if (!response.ok) {
+      const data = await response.json();
+      throw new Error(data.mensajeError || `Error HTTP: ${response.status}`);
+    }
+
+    usuario = await response.json();
+    actualizarDatosUsuarioUI();
+    renderizarProductos();
+  } catch (error) {
+    console.error("Error al canjear producto:", error);
+    boton.disabled = false;
+    boton.innerHTML = '<i class="fas fa-check-circle me-2"></i>Canjear';
+    alert(`Error al canjear: ${error.message}`);
+  }
+}
+
+// Delegar evento de canje en el contenedor de productos
+productosContainer.addEventListener("click", (event) => {
+  const boton = event.target.closest(".btn-canjear");
+  if (!boton) return;
+
+  const puntosNecesarios = parseInt(boton.dataset.puntos, 10);
+  canjearProducto(puntosNecesarios, boton);
+});
 
 // Función para actualizar todos los datos
 async function actualizarDatos() {

@@ -136,17 +136,17 @@ body {
     text-transform: uppercase;
 }
 
-.estado-disponible {
+.estado-verde {
     background-color: rgba(40, 167, 69, 0.2);
     color: var(--color-verde-texto);
 }
 
-.estado-cercano {
+.estado-naranja {
     background-color: rgba(255, 193, 7, 0.2);
     color: var(--color-naranja-texto);
 }
 
-.estado-lejano {
+.estado-rojo {
     background-color: rgba(220, 53, 69, 0.2);
     color: var(--color-rojo-texto);
 }

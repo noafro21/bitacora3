@@ -61,10 +61,38 @@ router.get("/:correo", async (req, res) => {
   }
 });
 
-/**  
-http://localhost:3000/usuarios
-{
-  "nombre": "Rose González",
+// PATCH: Canjear un producto descontando puntos del usuario
+router.patch("/:correo/canjear", async (req, res) => {
+  const { correo } = req.params;
+  const { puntosNecesarios } = req.body;
+
+  if (typeof puntosNecesarios !== "number" || isNaN(puntosNecesarios) || puntosNecesarios <= 0) {
+    return res
+      .status(400)
+      .json({ mensajeError: "Los puntos necesarios deben ser un valor positivo" });
+  }
+
+  try {
+    const usuario = await Usuario.findOne({ correo });
+
+    if (!usuario) {
+      return res.status(404).json({ mensajeError: "Usuario no encontrado" });
+    }
+
+    if (usuario.puntosDisponibles < puntosNecesarios) {
+      return res
+        .status(400)
+        .json({ mensajeError: "Puntos insuficientes para realizar el canje" });
+    }
+
+    usuario.puntosDisponibles -= puntosNecesarios;
+    usuario.puntosCanjeados += puntosNecesarios;
+
+    await usuario.save();
+    res.json(usuario);
+  } catch (error) {
+    res.status(500).json({ mensajeError: error.message });
+  }
   "correo": "rose@test.ac.cr",
   "puntosDisponibles": 10,
   "puntosCanjeados": 5,
